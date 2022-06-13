@@ -6,13 +6,33 @@ burger.onclick = function() {
     header.classList.toggle("menu-open");
 }
 
-//carousel
-// $(document).ready(function(){
-//     $('.carousel').slick({
-//         dots: false,
-//         arrows: false
-//     });
-// });
+// Slider
+
+$('.slider-for').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  dots: false,
+  fade: true,
+  asNavFor: '.slider-nav'
+});
+$('.slider-nav').slick({
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  asNavFor: '.slider-for',
+  dots: false,
+  arrows: false,
+  focusOnSelect: true
+});
+
+$('a[data-slide]').click(function(e) {
+  e.preventDefault();
+  var slideno = $(this).data('slide');
+  $('.slider-nav').slick('slickGoTo', slideno -1);
+});
+
+// Carousel
+
 $('.carousel').slick({
   centerMode: true,
   dots: false,
